@@ -1,0 +1,33 @@
+{
+  "name": "wodx",
+  "version": "1.0.0",
+  "description": "Workout of the day on the go with video inspiration created by the fitness community.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lgsantiago/wodx.git"
+  },
+  "keywords": [
+    "wod",
+    "wodx",
+    "crossfit",
+    "workout",
+    "fit",
+    "fitness",
+    "health",
+    "wellness"
+  ],
+  "author": "Luis Santiago",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lgsantiago/wodx/issues"
+  },
+  "homepage": "https://github.com/lgsantiago/wodx",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
