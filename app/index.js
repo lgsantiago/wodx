@@ -23,7 +23,7 @@ app.use((request, response, next) => {
 })
 
 app.get('/api/v1/wod', (request, response) => {  
-  con.query('SELECT movement FROM wodx.movement AS r1 JOIN (SELECT CEIL(RAND() * (SELECT MAX(id) FROM wodx.movement)) AS id) AS r2 WHERE r1.id >= r2.id ORDER BY r1.id ASC LIMIT '+response.numberOfMovements,
+  con.query('SELECT movement FROM wodx.movement ORDER BY RAND() LIMIT '+response.numberOfMovements,
     function(err,rows){
     if(err) throw err;
 
