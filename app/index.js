@@ -5,6 +5,10 @@ const app = express()
 const port = Number(process.env.PORT || 3000);
 const reps = [10,12,15,18,20];
 
+app.get('/', (request, response) => {  
+  response.send('Nothing to see here.')
+})
+
 app.use((request, response, next) => {  
   console.log(request.headers)
   next()
