@@ -42,6 +42,29 @@ app.get('/api/v1/wod', (request, response) => {
   });
 })
 
+
+app.use((request, response, next) => {  
+  response.videos = [];
+  next()
+})
+
+app.get('/api/v1/videos', (request, response) => {  
+  con.query('SELECT video FROM wodx.video ORDER BY RAND() LIMIT 42',
+    function(err,rows){
+    if(err) throw err;
+
+    for (var i = 0; i < rows.length; i++) {
+      response.videos[i] = rows[i].video;
+    };
+
+    response.json({
+      videos: response.videos,
+      message: "Video links"
+    })
+
+  });
+})
+
 app.listen(port, (err) => {  
   if (err) {
     return console.log('something bad happened', err)
