@@ -57,7 +57,7 @@ app.get('/api/v1/videos', (request, response) => {
       response.videos[i] = rows[i].video;
     };
 
-    response.json({
+    response.jsonp({
       videos: response.videos,
       message: "Video links"
     })
