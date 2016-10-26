@@ -6,7 +6,7 @@ const port = Number(process.env.PORT || 3000);
 const reps = [10,12,15,18,20];
 
 app.get('/', (request, response) => {  
-  response.send('Nothing to see here.')
+  response.send('Nothing here')
 })
 
 app.use((request, response, next) => {  
@@ -35,13 +35,11 @@ app.get('/api/v1/wod', (request, response) => {
     response.json({
       rounds: response.rounds,
       movements: response.movements,
-      reps: response.reps,
-      message: "Hello from Wodx!"
+      reps: response.reps
     })
 
   });
 })
-
 
 app.use((request, response, next) => {  
   response.videos = [];
@@ -49,7 +47,15 @@ app.use((request, response, next) => {
 })
 
 app.get('/api/v1/videos', (request, response) => {  
-  con.query('SELECT video FROM wodx.video ORDER BY RAND() LIMIT 42',
+
+  if(request.query.qty == null){
+    limit = 42;
+  }
+  else{
+    limit = request.query.qty;
+  }
+
+  con.query('SELECT video FROM wodx.video ORDER BY RAND() LIMIT '+ limit,
     function(err,rows){
     if(err) throw err;
 
@@ -69,6 +75,5 @@ app.listen(port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
   }
-
   console.log(`server is listening on ${port}`)
 })

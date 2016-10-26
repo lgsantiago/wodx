@@ -29,6 +29,8 @@
   "homepage": "https://github.com/lgsantiago/wodx",
   "dependencies": {
     "express": "^4.14.0",
-    "mysql": "^2.11.1"
+    "mysql": "^2.11.1",
+    "request": "^2.76.0",
+    "request-promise": "^4.1.1"
   }
 }
